@@ -1,0 +1,16 @@
+{
+    "name": "GG.SharpTelemetry",
+    "rootNamespace": "GGSharpTelemetry",
+    "references": [
+        "GUID:288e128c024bc4eb5ae1370046c736af"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

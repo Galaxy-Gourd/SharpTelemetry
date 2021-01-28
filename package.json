@@ -1,0 +1,11 @@
+{
+  "name": "com.galaxygourd.ggsharptelemetry",
+  "version": "1.0.0",
+  "displayName": "GG Sharp Telemetry",
+  "description": "Debug telemetry support for GGCore sharp packages.",
+  "unity": "2019.4",
+  "author": {
+    "name": "Galaxy Gourd",
+    "email": "mstephens.dev@gmail.com" 
+  }
+}
