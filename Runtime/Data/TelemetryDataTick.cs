@@ -1,8 +1,12 @@
 using System;
+using GGSharpData;
 
 namespace GGSharpTelemetry
 {
-    public struct TelemetryDataTick
+    /// <summary>
+    /// Stores telemetry data relating to the tick system.
+    /// </summary>
+    public class TelemetryDataTick : TelemetryData
     {
         public TelemetryTickData[] TicksVariable;
         public TelemetryTickData[] TicksFixed;
@@ -13,8 +17,7 @@ namespace GGSharpTelemetry
             public string TickName;
             public TelemetryTicksetData[] TicksetData;
         }
-        
-        
+
         public struct TelemetryTicksetData
         {
             public string TicksetName;

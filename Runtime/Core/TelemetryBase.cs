@@ -1,26 +1,43 @@
+using GGSharpData;
+
 namespace GGSharpTelemetry
 {
     /// <summary>
     /// Base class for telemetry modules.
     /// </summary>
-    public abstract class TelemetryBase <T>: ITelemetryModule where T : struct
+    public abstract class TelemetryBase<T, S> : ITelemetryModule
+        where T : TelemetryData, new()
+        where S : ICoreSystem
     {
-        #region MODULE
+        #region VARIABLES
 
-        public abstract string ReadTelemetryData();
-
-        #endregion MODULE
-
-
-        #region FORMAT
+        public TelemetryData TelemetryData => ReadTelemetryData();
 
         /// <summary>
-        /// Formats the data for the telemetry module.
+        /// Data for this telemetry class
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        protected abstract string FormatData(T data);
+        protected readonly T _data;
 
-        #endregion FORMAT
+        protected readonly S _system;
+
+        #endregion VARIABLES
+
+
+        #region CONSTRUCTOR
+
+        protected TelemetryBase(S system)
+        {
+            _data = new T();
+            _system = system;
+        }
+
+        #endregion CONSTRUCTOR
+
+
+        #region DATA
+
+        public abstract T ReadTelemetryData();
+
+        #endregion DATA
     }
 }

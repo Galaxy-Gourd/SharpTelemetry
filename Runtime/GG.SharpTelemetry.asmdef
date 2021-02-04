@@ -2,7 +2,10 @@
     "name": "GG.SharpTelemetry",
     "rootNamespace": "GGSharpTelemetry",
     "references": [
-        "GUID:288e128c024bc4eb5ae1370046c736af"
+        "GUID:afbc0cabfa5564f968a043e2e15a562d",
+        "GUID:fc813e216cb2e464eb66757cb87d8eb6",
+        "GUID:288e128c024bc4eb5ae1370046c736af",
+        "GUID:0ec6cd75d35ac4ace90517d41c55d946"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

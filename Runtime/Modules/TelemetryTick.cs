@@ -1,43 +1,31 @@
+using GGSharpData;
 using GGSharpTick;
 
 namespace GGSharpTelemetry
 {
     /// <summary>
-    /// Provides debug telemetry information for the GGCore SharpTick system.
+    /// Calculates debug telemetry information for the GGCore SharpTick system.
     /// </summary>
-    public class TelemetryTick : TelemetryBase<TelemetryDataTick>
+    public class TelemetryTick : TelemetryBase<TelemetryDataTick, ICoreTick>
     {
-        #region VARIABLES
+        #region CONSTRUCTION
 
-        /// <summary>
-        /// The tick system from which this module will collect telemetry information
-        /// </summary>
-        private readonly CoreTick _coreTick;
-        
-        //
-        private TelemetryDataTick _data;
-
-        #endregion VARIABLES
-
-
-        #region INITIALIZATION
-
-        public TelemetryTick(CoreTick coreTick)
+        public TelemetryTick(ICoreTick system) : base(system)
         {
-            _coreTick = coreTick;
+            
         }
 
-        #endregion INITIALIZATION
+        #endregion CONSTRUCTION
         
         
         #region DATA
 
-        public override string ReadTelemetryData()
+        public override TelemetryDataTick ReadTelemetryData()
         {
-            _data.TicksVariable = GetTickData((TickVariable[])_coreTick.VariableTicks);
-            _data.TicksFixed = GetTickData((TickFixed[])_coreTick.FixedTicks);
-            
-            return FormatData(_data);
+            _data.TicksVariable = GetTickData((TickVariable[])_system.VariableTicks);
+            _data.TicksFixed = GetTickData((TickFixed[])_system.FixedTicks);
+
+            return _data;
         }
 
         #endregion DATA
@@ -68,21 +56,13 @@ namespace GGSharpTelemetry
                     };
                     d.TicksetData[e] = ticksetData;
                 }
+
+                data[i] = d;
             }
 
             return data;
         }
 
         #endregion UTILITY
-
-
-        #region FORMAT
-        
-        protected override string FormatData(TelemetryDataTick data)
-        {
-             return _data.ToString();
-        }
-
-        #endregion FORMAT
     }
 }
